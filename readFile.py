@@ -28,9 +28,9 @@ def read_create (filename):
                   for word in line.split():
                       if (count == 0):
                           n1.append(word)
-                      if (count == 1):
+                      elif (count == 1):
                           n2.append(word)
-                      if (count == 2):
+                      elif (count == 2):
                           c.append(word)
                       count = count + 1
                   G.add_edge(n1[x], n2[x], capacity = c[x])
