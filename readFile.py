@@ -1,6 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import random as rdm
 
+#----------------------------------------------------------------------------------------------
 #Fonction qui permet de lire un graphe au format .txt et crée un graphe NetworkX corréspondant
 #Input : filename (nom du fichier à lire)
 #Output : création d'un graphe à l'aide de NetworkX
@@ -39,17 +41,41 @@ def read_create (filename):
               #Erreur si #sommets nuls ou négatifs
               else:
                 print("error : graph without nodes !")
-              
+    return G
               
   except FileNotFoundError:
       print("File was not found !")
-  return G
-
+#----------------------------------------------------------------------------------------------
 #Crée le graphe sous forme de fenêtre visible
 #Input : Un graphe
 #Output : Le graphe visible
 def windowed_graph (G):
   pos = nx.spring_layout(G)
   nx.draw(G, pos, with_labels=True, font_weight='normal')
-  nx.draw_networkx_edge_labels(G, pos)
+  #nx.draw_networkx_edge_labels(G, pos)
   plt.show()
+
+#----------------------------------------------------------------------------------------------
+#Crée ou utilise un fichier graphe.txt et place des valeurs alétoires de graphe
+#Input : /
+#Output : Ecriture sur fichier effectué
+def generate (x):
+    try:
+        with open("graphe.txt","w") as file:
+            file.write(str(x)+"\n")
+            i = 0
+            while i<x:
+                a = str(rdm.randint(1, x))
+                b = str(rdm.randint(1, x))
+                #Si arc formant boucle -> changer l'arc
+                while (a == b):
+                    b = str(rdm.randint(1, x))
+                capacity = str(rdm.randint(1, 10))
+                #Ecriture des données
+                file.write("{} ".format(a))
+                file.write("{} ".format(b))
+                file.write("{}\n".format(capacity))
+                i = i + 1
+    except FileNotFoundError:
+        print("File was not found !")
+#----------------------------------------------------------------------------------------------
