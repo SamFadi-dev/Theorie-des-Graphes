@@ -12,9 +12,11 @@ def generate ():
             while i<100:
                 a = str(rdm.randint(1, 100))
                 b = str(rdm.randint(1, 100))
+                #Si arc formant boucle -> changer l'arc
                 while (a == b):
                     b = str(rdm.randint(1, 100))
                 capacity = str(rdm.randint(1, 10))
+                #Ecriture des données
                 file.write("{} ".format(a))
                 file.write("{} ".format(b))
                 file.write("{}\n".format(capacity))
