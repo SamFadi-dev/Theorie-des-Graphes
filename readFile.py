@@ -35,7 +35,7 @@ def read_create (filename):
                       elif (count == 2):
                           c.append(word)
                       count = count + 1
-                  G.add_edge(n1[x], n2[x], capacity = c[x])
+                  G.add_edge(n1[x], n2[x], capacity = int(c[x]))
                   x = x + 1
 
               #Erreur si #sommets nuls ou négatifs
@@ -47,19 +47,20 @@ def read_create (filename):
       print("File was not found !")
 #----------------------------------------------------------------------------------------------
 #Crée le graphe sous forme de fenêtre visible
-#Input : Un graphe
-#Output : Le graphe visible
+#Input : Un graphe | G
+#Output : Le graphe visible | /
 def windowed_graph (G):
-  pos = nx.spring_layout(G)
+  pos = nx.spiral_layout(G)
   nx.draw(G, pos, with_labels=True, font_weight='normal')
-  #nx.draw_networkx_edge_labels(G, pos)
+  nx.draw_networkx_edge_labels(G, pos)
   plt.show()
 
 #----------------------------------------------------------------------------------------------
 #Crée ou utilise un fichier graphe.txt et place des valeurs alétoires de graphe
-#Input : /
+#Input : un naturel | x
 #Output : Ecriture sur fichier effectué
 def generate (x):
+  if (x > 0):
     try:
         with open("graphe.txt","w") as file:
             file.write(str(x)+"\n")
@@ -78,4 +79,6 @@ def generate (x):
                 i = i + 1
     except FileNotFoundError:
         print("File was not found !")
+  else:
+    return -1
 #----------------------------------------------------------------------------------------------
