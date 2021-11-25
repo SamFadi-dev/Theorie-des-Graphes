@@ -49,3 +49,50 @@ def max_flow(minCap):
     maxFlow = maxFlow + minCap
 
     return maxFlow
+
+#----------------------------------------------------------------------------------------------
+#Fonction qui retourne le niveau d'un sommet
+#Input : Un graphe, une source et un sommet cible | G source target
+#Output : Le niveau du sommet | level
+def find_level (G, source, target):
+    array = 0
+    for i in range(1, int(target)+1):
+        array = nx.shortest_path(G, source, str(i))
+
+    level = int(len(array))
+
+    #Si un arc, on ajoute un niveau pour contre-balancer le return
+    if(level == 1):
+            level = level + 1
+
+    return level-1
+
+#----------------------------------------------------------------------------------------------
+#Fonction qui retourne le niveau des sommets
+#Input : Un graphe | G 
+#Output : Le niveau des sommets modifié
+def all_levels (G):
+    numberN = nx.number_of_nodes(G)
+    allnodes = list(G.nodes)
+    source, sink = source_sink(G)
+
+    G.nodes["1"]["level"] = "0"
+    G.nodes[sink]
+
+    for i in range(2, numberN+1):
+        level = str(find_level(G, source, str(i)))
+        
+        if(("level" in G[str(i)]) == False):
+            G.nodes[str(i)]["level"] = level
+        print(G.nodes.data())
+
+    
+
+
+
+
+
+
+
+
+

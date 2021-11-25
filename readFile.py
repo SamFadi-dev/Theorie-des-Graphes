@@ -50,7 +50,7 @@ def read_create (filename):
 #Input : Un graphe | G
 #Output : Le graphe visible | /
 def windowed_graph (G):
-  pos = nx.spiral_layout(G)
+  pos = nx.spring_layout(G)
   nx.draw(G, pos, with_labels=True, font_weight='normal')
   nx.draw_networkx_edge_labels(G, pos)
   plt.show()

@@ -39,10 +39,12 @@ while ans:
         filename = input("What's the name of your .txt file ?\n")
         G = rf.read_create(filename)
         source, sink = alg.source_sink(G)
-      
-        #dinitz(G, source, sink)
-        #flow_value = nx.maximum_flow_value(G, source, sink)
-        #print("The maximum flow value is "+str(flow_value))
+       
+        alg.all_levels(G)
+        
+        dinitz(G, source, sink)
+        flow_value = nx.maximum_flow_value(G, source, sink)
+        print("The maximum flow value is "+str(flow_value))
 
         rf.windowed_graph(G)
         print("\n")
