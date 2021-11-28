@@ -22,7 +22,9 @@ while ans:
         print("\n")
         x = int(input("How much nodes do you need ?\n"))
         if(rf.generate(x) == -1):
-            print("Graph without nodes !")
+            print("Graph with <= 1 nodes !")
+            print("The maximum flow value is 0")
+            break
         else:
             G = rf.read_create("graphe100.txt")
             source, sink = alg.source_sink(G)

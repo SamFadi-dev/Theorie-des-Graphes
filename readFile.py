@@ -61,13 +61,14 @@ def windowed_graph (G):
 #Input : un naturel | x
 #Output : Ecriture sur fichier effectué
 def generate (x):
-  if (x > 0):
+  #Vérifier si le nombre de sommet est valide (> 1)
+  if (x > 1):
     try:
-        with open("graphe.txt","w") as file:
+        with open("graphe100.txt","w") as file:
             file.write(str(x)+"\n")
             i = 0
             while i<x:
-                a = str(rdm.randint(1, x))
+                a = i+1
                 b = str(rdm.randint(1, x))
                 #Si arc formant boucle -> changer l'arc
                 while (a == b):

@@ -137,12 +137,12 @@ def new_edges (G, path, minCap):
             G.remove_edge(path[i], path[i+1])
 
         #Si un arc entre deux sommets n'est pas disponible, en rajouter un
-        if not((str(i+2), path[i]) in G.edges()):
-            G.add_edge(path[i+1], path[i], capacity = minCap)
-        #else:
-         #   cap = G.get_edge_data(path[i+1], path[i], "capacity")["capacity"]
-          #  cap = cap + minCap
-           # nx.set_edge_attributes(G, {(path[i+1], path[i]): {"capacity": cap}})
+        if not((path[i+1], path[i]) in G.edges()):
+            G.add_edge(str(path[i+1]), str(path[i]), capacity = minCap)
+        else:
+            cap = G.get_edge_data(path[i+1], path[i], "capacity")["capacity"]
+            cap = cap + minCap
+            nx.set_edge_attributes(G, {(str(path[i+1]), str(path[i])): {"capacity": cap}})
 
 #----------------------------------------------------------------------------------------------
 #Fonction qui calcule le flow maximum d'un réseau de sommets
