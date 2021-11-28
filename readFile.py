@@ -37,6 +37,7 @@ def read_create (filename):
                       count = count + 1
                   G.add_edge(n1[x], n2[x], capacity = int(c[x]))
                   x = x + 1
+                  
 
               #Erreur si #sommets nuls ou négatifs
               else:

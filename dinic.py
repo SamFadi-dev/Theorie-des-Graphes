@@ -41,10 +41,16 @@ while ans:
         source, sink = alg.source_sink(G)
        
         alg.all_levels(G)
-        
-        dinitz(G, source, sink)
-        flow_value = nx.maximum_flow_value(G, source, sink)
-        print("The maximum flow value is "+str(flow_value))
+        #print(G.nodes["1"]["level"])
+     
+        #print(nx.get_node_attributes(G, "level"))
+
+        path = alg.augmenting_level_path(G)
+        print(G.get_edge_data(str(1), str(2), "capacity"))
+        print(alg.check_flow(G, path))
+        #dinitz(G, source, sink)
+        #flow_value = nx.maximum_flow_value(G, source, sink)
+        #print("The maximum flow value is "+str(flow_value))
 
         rf.windowed_graph(G)
         print("\n")
