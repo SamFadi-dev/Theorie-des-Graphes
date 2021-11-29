@@ -115,7 +115,7 @@ def augmenting_level_path (G):
 def check_augmenting_level_path(G):
     path = augmenting_level_path(G)
 
-    #Si le chemin est disponible, renvoyer True sinon False
+    #Si le chemin es!t disponible, renvoyer True sinon False
     if(path):
         return True
     else:
@@ -128,9 +128,9 @@ def check_augmenting_level_path(G):
 def new_edges (G, path, minCap):
     #Boucler tant que le chemin est disponible
     for i in range(len(path)-1):
-        cap = G.get_edge_data(path[i], path[i+1], "capacity")["capacity"]
-        cap = cap - minCap
-        nx.set_edge_attributes(G, {(path[i], path[i+1]): {"capacity": cap}})
+        flow = G.get_edge_data(path[i], path[i+1], "capacity")["capacity"]
+        flow = flow - minCap
+        nx.set_edge_attributes(G, {(path[i], path[i+1]): {"capacity": flow}})
 
         #Si la capacité <= 0 on enlève l'arc reliant les deux sommets
         if(G.get_edge_data(path[i], path[i+1], "capacity")["capacity"] <= 0):
@@ -140,9 +140,9 @@ def new_edges (G, path, minCap):
         if not((path[i+1], path[i]) in G.edges()):
             G.add_edge(str(path[i+1]), str(path[i]), capacity = minCap)
         else:
-            cap = G.get_edge_data(path[i+1], path[i], "capacity")["capacity"]
-            cap = cap + minCap
-            nx.set_edge_attributes(G, {(str(path[i+1]), str(path[i])): {"capacity": cap}})
+            flow = G.get_edge_data(path[i+1], path[i], "capacity")["capacity"]
+            flow = flow + minCap
+            nx.set_edge_attributes(G, {(str(path[i+1]), str(path[i])): {"capacity": flow}})
 
 #----------------------------------------------------------------------------------------------
 #Fonction qui calcule le flow maximum d'un réseau de sommets
