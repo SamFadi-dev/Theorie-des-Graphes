@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import random as rdm
 
 from networkx.algorithms.shortest_paths.generic import has_path
-import readFile as rf
+import functions as rf
 
 #----------------------------------------------------------------------------------------------
 #Fonction qui retourne la source et le puit

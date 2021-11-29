@@ -1,4 +1,4 @@
-import readFile as rf
+import functions as rf
 import networkx as nx
 import matplotlib.pyplot as plt
 import algo as alg

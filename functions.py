@@ -35,6 +35,11 @@ def read_create (filename):
                       elif (count == 2):
                           c.append(word)
                       count = count + 1
+                  #Vérifier la composition du graphe    
+                  if(count != 3):
+                    print()
+                    print('Wrong Graph composition !')
+                    exit()    
                   G.add_edge(n1[x], n2[x], capacity = int(c[x]))
                   x = x + 1
                   
