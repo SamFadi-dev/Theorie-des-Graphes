@@ -27,9 +27,10 @@ while ans:
             break
         else:
             G = rf.read_create("graphe100.txt")
-            source, sink = alg.source_sink(G)
 
-        maxFlow = alg.dinic(G)
+        source, sink = alg.source_sink(G)
+        maxFlow = alg.dinic(G, source, sink)
+        print()
         print("The maximum flow value is "+str(maxFlow))
 
         rf.windowed_graph(G)
@@ -40,9 +41,10 @@ while ans:
         print("\n")
         filename = input("What's the name of your .txt file ?\n")
         G = rf.read_create(filename)
+
         source, sink = alg.source_sink(G)
-       
-        maxFlow = alg.dinic(G)
+        maxFlow = alg.dinic(G, source, sink)
+        print()
         print("The maximum flow value is "+str(maxFlow))
 
         rf.windowed_graph(G)
