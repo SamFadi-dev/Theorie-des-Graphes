@@ -13,7 +13,8 @@ while ans:
     print("1. Apply Dinic's algorithm using a random graph")
     print("2. Apply the Dinic's algorithm using a graph given by the user")
     print("3. Check the Dinic's algorithm with NetworkX function")
-    print("4. exit the program")
+    print("4. About")   
+    print("5. exit the program")
     print("----------------------------------------------------------------")
     ans = int(input("\n"))
 
@@ -63,9 +64,19 @@ while ans:
 
         rf.windowed_graph(G)
         print("\n")
+    #about
+    elif(ans == 4):
+    print("\n")
+    print("University of Liege (2021-2022)")
+    print("This program is created by 2 computer science students.")
+    print("SALEHIKATOZI Pouria & HAMIE Sam")
+    print("Dinic's algorithm or Dinitz's algorithm is a strongly polynomial algorithm for computing the maximum flow in a flow network, conceived in 1970 by Israeli (formerly Soviet) computer scientist Yefim (Chaim) A. Dinitz.")
+    print("For more information about Dinic (Dinitz) algorithms:")
+    print("https://en.wikipedia.org/wiki/Dinic%27s_algorithm")
+    print("ⒸAll copyrights of this program are reserved for these 2 students.")
 
     #Quitter le programme
-    elif(ans == 4):
+    elif(ans == 5):
         print("\n")
         print("Bye bye !\n")
         break
