@@ -66,14 +66,14 @@ while ans:
         print("\n")
     #about
     elif(ans == 4):
-    print("\n")
-    print("University of Liege (2021-2022) \n")
-    print("This program is created by 2 computer science students. \n")
-    print("SALEHIKATOZI Pouria & EL MASRI Sam \n")
-    print("Dinic's algorithm or Dinitz's algorithm is a strongly polynomial algorithm for computing the maximum flow in a flow network, conceived in 1970 by the computer scientist Yefim (Chaim) A. Dinitz.\n")
-    print("For more information about Dinic (Dinitz) algorithms: \n")
-    print("https://en.wikipedia.org/wiki/Dinic%27s_algorithm \n")
-    print("ⒸAll copyrights of this program are reserved for these 2 students. \n")
+        print("\n")
+        print("University of Liege (2021-2022) \n")
+        print("This program is created by 2 computer science students. \n")
+        print("SALEHIKATOZI Pouria & EL MASRI Sam \n")
+        print("Dinic's algorithm or Dinitz's algorithm is a strongly polynomial algorithm for computing the maximum flow in a flow network, conceived in 1970 by the computer scientist Yefim (Chaim) A. Dinitz.\n")
+        print("For more information about Dinic (Dinitz) algorithms: \n")
+        print("https://en.wikipedia.org/wiki/Dinic%27s_algorithm \n")
+        print("ⒸAll copyrights of this program are reserved for these 2 students. \n")
 
     #Quitter le programme
     elif(ans == 5):
