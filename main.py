@@ -14,7 +14,7 @@ while ans:
     print("2. Apply the Dinic's algorithm using a graph given by the user")
     print("3. Check the Dinic's algorithm with NetworkX function")
     print("4. About")   
-    print("5. exit the program")
+    print("5. Exit the program")
     print("----------------------------------------------------------------")
     ans = int(input("\n"))
 
