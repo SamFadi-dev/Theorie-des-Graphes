@@ -77,10 +77,11 @@ def min_cap(G, path):
 #Input : Un graphe | G 
 #Output : Le chemin avec niveau montant
 def augmenting_level_path (G, source, sink):
-    paths = []
+    path = []
     if(nx.has_path(G, source, sink)):
-        paths = list(nx.shortest_simple_paths(G, source, sink))
-        return paths[0]
+        path = list(nx.shortest_path(G, source, sink))
+        print(path)
+        return path
     else:
         return False
 
