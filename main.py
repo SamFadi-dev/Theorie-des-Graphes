@@ -1,4 +1,4 @@
-import functions as rf
+import functions as fct
 import networkx as nx
 import matplotlib.pyplot as plt
 import algo as alg
@@ -22,58 +22,51 @@ while ans:
     if(ans == 1):
         print("\n")
         x = int(input("How much nodes do you need ?\n"))
-        if(rf.generate(x) == -1):
+        if(fct.generate(x) == -1):
             print("Graph with <= 1 nodes !")
             print("The maximum flow value is 0")
             break
         else:
-            G = rf.read_create("graphe100.txt")
+            G = fct.read_create("graphe100.txt")
 
         source, sink = alg.source_sink(G)
-        maxFlow = alg.dinic(G, source, sink)
+        maxFlow = alg.dinic_algo(G, source, sink)
         print()
         print("The maximum flow value is "+str(maxFlow))
 
-        rf.windowed_graph(G)
+        fct.windowed_graph(G)
         print("\n")
 
     #Graphe fourni par l'utilisateur
     elif(ans == 2):
         print("\n")
         filename = input("What's the name of your .txt file ?\n")
-        G = rf.read_create(filename)
+        G = fct.read_create(filename)
 
         source, sink = alg.source_sink(G)
-        maxFlow = alg.dinic(G, source, sink)
+        maxFlow = alg.dinic_algo(G, source, sink)
         print()
         print("The maximum flow value is "+str(maxFlow))
 
-        rf.windowed_graph(G)
+        fct.windowed_graph(G)
         print("\n")
 
     #Vérification de l'algo avec la fonction dinitz()
     elif(ans == 3):
         print("\n")
         filename = input("What's the name of your .txt file ?\n")
-        G = rf.read_create(filename)
+        G = fct.read_create(filename)
         source, sink = alg.source_sink(G)
        
         dinitz(G, source, sink)
         flow_value = nx.maximum_flow_value(G, source, sink)
-        print("The maximum flow1 value is "+str(flow_value))
+        print("The maximum flow value is "+str(flow_value))
 
-        rf.windowed_graph(G)
+        fct.windowed_graph(G)
         print("\n")
     #about
     elif(ans == 4):
-        print("\n")
-        print("University of Liege (2021-2022) \n")
-        print("This program is created by 2 computer science students. \n")
-        print("SALEHIKATOZI Pouria & EL MASRI Sam \n")
-        print("Dinic's algorithm or Dinitz's algorithm is a strongly polynomial algorithm for computing the maximum flow in a flow network, conceived in 1970 by the computer scientist Yefim (Chaim) A. Dinitz.\n")
-        print("For more information about Dinic (Dinitz) algorithms: \n")
-        print("https://en.wikipedia.org/wiki/Dinic%27s_algorithm \n")
-        print("ⒸAll copyrights of this program are reserved for these 2 students. \n")
+        fct.about()
 
     #Quitter le programme
     elif(ans == 5):

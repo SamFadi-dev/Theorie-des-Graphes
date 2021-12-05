@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import random as rdm
+import time
 
 #----------------------------------------------------------------------------------------------
 #Fonction qui permet de lire un graphe au format .txt et crée un graphe NetworkX corréspondant
@@ -88,4 +89,19 @@ def generate (x):
         print("File was not found !")
   else:
     return -1
+
+#----------------------------------------------------------------------------------------------
+#Print les informations liées au code
+#Input : /
+#Output : /
+def about():
+  print("\n")
+  print("University of Liege (2021-2022) \n")
+  print("This program is created by 2 computer science students. \n")
+  print("SALEHIKATOZI Pouria & EL MASRI Sam \n")
+  print("Dinic's algorithm or Dinitz's algorithm is a strongly polynomial algorithm for computing the maximum flow in a flow network, conceived in 1970 by the computer scientist Yefim (Chaim) A. Dinitz.\n")
+  print("For more information about Dinic (Dinitz) algorithms: \n")
+  print("https://en.wikipedia.org/wiki/Dinic%27s_algorithm \n")
+  print("ⒸAll copyrights of this program are reserved for these 2 students. \n")
+  time.sleep(3)
 #----------------------------------------------------------------------------------------------
