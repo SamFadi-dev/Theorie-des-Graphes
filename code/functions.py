@@ -15,7 +15,7 @@ def read_create (filename):
               #Lire la première ligne
               #Vérifier si le fichier contient au moins un sommet
               nodes = file.readline()
-              #Si noeud non disponible
+              #Si #noeud non disponible
               if((nodes == "\n") or (' ' in nodes)):
                 print("No nodes !\n")
                 exit()
