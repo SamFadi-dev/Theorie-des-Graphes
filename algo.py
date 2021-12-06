@@ -80,7 +80,6 @@ def augmenting_level_path (G, source, sink):
     path = []
     if(nx.has_path(G, source, sink)):
         path = list(nx.shortest_path(G, source, sink))
-        print(path)
         return path
     else:
         return False
