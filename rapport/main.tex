@@ -37,7 +37,7 @@
 \newcommand{\coms}[1]{\textcolor{MidnightBlue}{#1}}
 
 \lstset{
-    language=Python, % Utilisation du langage C
+    language=C, % Utilisation du langage C
     commentstyle={\color{MidnightBlue}}, % Couleur des commentaires
     frame=single, % Entoure le code d'un joli cadre
     rulecolor=\color{black}, % Couleur de la ligne qui forme le cadre
@@ -100,15 +100,55 @@
 \newpage
 \section{\textbf{Introduction :}}
 
-L'objectif principal de ce projet est d'appliquer l'algorithme de Dinic (ou Dinitz) qui nous aide à calculer le flow maximal dans un réseau de flow (graphe orienté). Cet algorithme a été inventé en 1970 par l'informaticien Yefim Dinitz.
+L'objectif principal de ce projet est d'appliquer l'algorithme de Dinic (ou Dinitz) qui nous aide à calculer le flot maximal dans un graphe donné. Cet algorithme a été inventé en 1970 par l'informaticien Yefim Dinitz.
 
 \section{\textbf{Formalisation du problème :}}
+Nous avons un graphe orienté, chaque sommet de notre graphe possède un niveau et chaque arc une capacité.
+\begin{figure}[!h]
+\centering
+  \includegraphics[width=8cm]{0.jpg}
+  %\caption{}
+  %\label{}
+\end{figure}
 
-Nous avons un graphe orienté, chaque sommet de notre graphe possède un niveau et chaque arc une capacité.\\\\
-Nous devons calculer le flot maximal entre 2 sommets, le sommet de \textbf{départ (source)} et le sommet d'\textbf{arrivé (sink)} en vérifiant que le niveau de chaque sommet que l’on parcourt est supérieur au sommet précédant dans le chemin qu'on a choisi pour arriver à sommet \textbf{arrivée (sink)}.\\\\
-On calcule le flot maximal d’un chemin grâce à la capacité de chaque arc et la capacité minimale de tous les arcs dans le chemin que l’on a choisi.\\\\
-On somme le flot minimale de tous les chemins possible entre le sommet \textbf{départ (source)} et le sommet d'\textbf{arrivé (sink)} pour trouver le flot maximal de notre graphe.\\\\
-A la fin de l'algorithme, la source devrait être isolée et ne devrait plus avoir de chemin vers le puits.
+Nous devons calculer le flot maximal entre 2 sommets, le sommet de \textbf{départ (source)} et le sommet \textbf{d'arrivée (sink)} en vérifiant que le niveau de chaque sommet qu’on parcourt est supérieur au sommet précédant dans le chemin qu’on a choisi pour arriver à sommet \textbf{arrivée (sink)}.\\\\
+On calcule le flot maximal d’un chemin grâce à la capacité de chaque arc et la capacité minimale de tous les arcs dans le chemin qu’on a choisi.\\
+Dans l'exemple au dessus, on procède comme suite et notre graphe devient :
+\textcolor{white}{\vdots}\\\\
+chemin : \textbf{S $\rightarrow$ B $\rightarrow$ D $\rightarrow$T} \\
+niveaux: \textbf{0 $\rightarrow$ 1 $\rightarrow$ 2 $\rightarrow$ 3}\\
+Comme l'ordre de niveau de chaque sommet est strictement croissant de 1 alors le chemin choisi est correcte et valide donc on peut continuer à appliquer l'algorithme.\\
+Capacité minimale : 4\\
+\textcolor{red}{$\textbf{S $\rightarrow$ B}$}\\
+\textcolor{red}{$\textbf{flot(S, B) = 10 - 4 = 6}$}\\
+\textcolor{red}{$\textbf{flot(B, S) = 4 + 0 = 4}$}
+
+\begin{figure}[!h]
+\centering
+  \includegraphics[width=7cm]{1.jpg}
+\end{figure}
+\textcolor{white}{\vdots}\\\\
+\textcolor{red}{$\textbf{B $\rightarrow$ D}$}\\
+\textcolor{red}{$\textbf{flot(B, D) = 4 - 4 = 0}$}\\
+\textcolor{red}{$\textbf{flot(D, B) = 0 + 4 = 4}$}
+
+\begin{figure}[!h]
+\centering
+  \includegraphics[width=7cm]{2.jpg}
+\end{figure}
+
+\textcolor{white}{\vdots}\\\\
+\textcolor{red}{$\textbf{D $\rightarrow$ T}$}\\
+\textcolor{red}{$\textbf{flot(D, T) = 10 - 4 = 6}$}\\
+\textcolor{red}{$\textbf{flot(T, D) = 0 + 4 = 4}$}
+\begin{figure}[!h]
+\centering
+  \includegraphics[width=7cm]{3.jpg}
+\end{figure}
+
+
+Nous ne pouvons plus calculer le flot de chemin \textbf{S $\rightarrow$ B $\rightarrow$ D $\rightarrow$T} puisque les niveaux des sommet sont changé respectivement à \textbf{0 $\rightarrow$ 2 $\rightarrow$ 1 $\rightarrow$ 2} et ils ne sont pas d'ordre croissant de 1.\\\\
+Nous sommons le flot maximal de tous les chemins possible entre le sommet de \textbf{départ (source)} et le sommet d'\textbf{arrivée (sink)} en vérifiant que les chemins sont corrects pour trouver le flot maximal de notre graphe.
 
 \section{\textbf{Analyse du problème et découpe en sous-problèmes :}}
 
@@ -125,22 +165,23 @@ Nous pouvons également créer un graphe d'une manière aléatoire en demandant 
 
 \subsection{Trouver tous les chemins possibles (SP2:}
 
-Tout d’abord, il faut trouver un chemin possible entre le sommet de \textbf{départ (source)} et le sommet d'\textbf{arrivé (sink)} en vérifiant que ce chemin est valide. Autrement dit un chemin tout les niveaux des sommets sont strictement croissants. Les deux sommets peuvent être choisi par l’utilisateur.
+Tout d’abord, il nous faut trouver un chemin possible entre le sommet de \textbf{départ (source)} et le sommet \textbf{d'arrivée (sink)} en vérifiant que ce chemin est valide (chemin le plus court possible). Autrement dit un chemin où tout les niveaux des sommets sont strictement croissants. Les deux sommets peuvent être choisi par l’utilisateur.
 
 \subsection{Calculer la capacité minimale dans un chemin (SP3):}
 
-Nous avons expliqué précédemment dans la partie "Formalisation du problème" que chaque arc possède une capacité et comme un chemin valide est construit par une série de sommets qui sont reliés l'un à l'autre grâces aux arcs alors nous devons chercher la capacité minimale de tous les arcs présents dans ce chemin.
+Nous avons expliqué précédemment dans la partie "Formalisation du problème" que chaque arc possède une capacité. Nous devons alors chercher la capacité minimale de tous les arcs présents dans un chemin donné (chemin le plus court possible).
 
 \subsection{Calculer le flot de chaque chemin et modifier le graphe (SP4):}
 
 Pour calculer le flot entre 2 sommets A et B, on procède comme suit : \\\\
-flot(A,B) = [La capacité de l'arc qui relie A et B] - [La capacité minimale du chemin]\\
-flot(B,A) = [La capacité minimale du chemin] + [La capacité de l'arc qui relie B et A]\\
+flot(A,B) = [La capacité d'arc qui relie A et B] - [La capacité minimale du chemin]\\
+flot(B,A) = [La capacité minimale du chemin] + [La capacité d'arc qui relie B et A]\\
 Après avoir calculé les flots on modifie le graphe et on remplace les nouveaux flot par la capacité d'arc qui était entre les 2 sommets A et B.
+A termes, la source devrait être isolée du puits.
 
 \subsection{Flot maximal (SP5):}
 
-La somme des flots minimales de tous les chemins possibles nous donne le flot maximal.
+La somme de toutes les capacités minimales (SP3) donne le flow maximal du réseau de noeuds. 
 
 \section{\textbf{Résolution des sous-problèmes :}}
 
@@ -157,10 +198,10 @@ Nous trouvons tous les chemins possibles dans la fonction principale dinic() qui
 Ensuite, dans cette fonction on vérifie tout d'abord s'il y a au moins un chemin possible entre le sommet de départ(source) et le sommet d'arrivée(sink) avec la fonction has\_path(). Après cet étape nous véifions tous les chemins possibles avec les deux fonctions check\_augmenting\_level\_path() et augmenting\_level\_path().
 
 \subsection{Résolution SP3 :}
-Le capacité minimale se trouve d'une manière très intutive. Tout d'abord, on récupère toutes les capacités du chemin considéré en utilisant la fonction G.get\_edge\_data(), on stocke les capacités des arcs dans une liste et ensuite on cherche la valeur minimale dans cette liste.
+Le capacité minimale se trouve d'une manière très intuitive. Tout d'abord, on récupère toutes les capacité du chemin considéré en utilisant la fonction G.get\_edge\_data(), on stocke les capacités des sommets dans une liste et ensuite on cherche la valeur minimale dans cette liste.
 \subsection{Résolution SP4 :}
 
-Dans la fonction modify\_edges(), tout simplement on applique les formules que nous avions pour calculer les flots.
+Dans la fonction modify\_edges(), tout simplement on applique les formules que nous avions pour calculer les flows.
 
 \subsection{Résolution SP5 :}
 
@@ -174,20 +215,24 @@ Nous avons rencontré plusieurs difficultés dans ce projet.
 Nous devions choisir un moyen de générer un graphe depuis un fichier quelconque. Nous avons beaucoup réfléchis jusqu'à choisir une méthode simple qui consiste à mettre la liste de tous les arcs dans un fichier "text". Ensuite, diviser chaque ligne en 3 et lire les informations en les plaçant dans un graphe NetworkX.
 
 \subsection{Trouver un "augmenting level path" :}
-Pour appliquer l'algorithme, il faut trouver plusieurs chemins reliant la source au puit. Suite à de nombreuses recherches, nous avons trouvé une fonction NetworkX qui permet de donner un chemin valable. Effectivement, ce chemin est bien un chemin a niveau croissant puisque le chemin est le court possible.
+Pour appliquer l'algorithme, il faut trouver plusieurs chemins reliant la source au puits. Suite à de nombreuses recherches, nous avons trouvé une fonction NetworkX qui permet de donner un chemin valable. Effectivement, ce chemin est bien a niveau croissant puisque le chemin est le plus court possible.
 
 \subsection{Faire des opérations sur les arcs :}
 L'algorithme nous oblige à soustraire et additionner les arcs par une certaine valeur. Ici le problème est lié à l'utilisation de la librairie NetworkX. Pouvoir modifier les valeurs d'un arc, etc.
 
+\subsection{La programmation défensive :}
+Le fait de protéger le programme de cas pathologiques. Nous avons du consacrer beaucoup de temps sur la programmation défensive.
+
 \section{\textbf{Conclusion :}}
-Nous avons créé une fonction permettant de calculer le flot maximale dans un graphe avec une complexité temporelle quadratique. Cet algorithme était très efficace dans son époque et nous pouvons marquer ca par notre implementation.  
+Nous avons créé une fonction permettant de calculer le flot maximale dans un graphe avec une complexité temporelle quadratique. Cet algorithme était très efficace et simple pour son époque.
 \section{\textbf{Les sources :}}
+
 Tout d'abord nous avons consulté le wikipedia :\\
 https://fr.wikipedia.org/wiki/Algorithme\_de\_Dinic\\
 https://en.wikipedia.org/wiki/Dinic%27s\_algorithm \\
 
 \textcolor{white}{\vdots}\\\\
-Ensuite nous avons regardé 2 vidéos sur Youtube pour être sûr de notre compréhension d'algorithme:\\\\
+Ensuite nous avons regardé 2 videos sur youtube pour être sûr de notre compréhension d'algorithme:\\\\
 https://www.youtube.com/watch?v=M6cm8UeeziI\\
 https://www.youtube.com/watch?v=duKIzgJQ1w8\\
 
