@@ -39,7 +39,11 @@ def read_create (filename):
                       elif (count == 1):
                           n2.append(word)
                       elif (count == 2):
-                          c.append(word)
+                          if int(word) <= 0:
+                            print('Wrong Graph composition !')
+                            exit()    
+                          else:
+                            c.append(word)
                       count = count + 1
                   #Vérifier la composition du graphe    
                   if(count != 3):
