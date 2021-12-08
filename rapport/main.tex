@@ -212,7 +212,7 @@ Le calcule de flot maximal se fait d'une manière assez rapide afin de faire app
 Nous avons rencontré plusieurs difficultés dans ce projet.
 
 \subsection{Initialisation et création du graphe :}
-Nous devions choisir un moyen de générer un graphe depuis un fichier quelconque. Nous avons beaucoup réfléchis jusqu'à choisir une méthode simple qui consiste à mettre la liste de tous les arcs dans un fichier "text". Ensuite, diviser chaque ligne en 3 et lire les informations en les plaçant dans un graphe NetworkX.
+Nous devions choisir un moyen de générer un graphe depuis un fichier quelconque. nous avons longuement pensé a une méthode simple qui consiste à mettre la liste de tous les arcs dans un fichier "text". Ensuite, diviser chaque ligne en 3 et lire les informations en les plaçant dans un graphe NetworkX.
 
 \subsection{Trouver un "augmenting level path" :}
 Pour appliquer l'algorithme, il faut trouver plusieurs chemins reliant la source au puits. Suite à de nombreuses recherches, nous avons trouvé une fonction NetworkX qui permet de donner un chemin valable. Effectivement, ce chemin est bien a niveau croissant puisque le chemin est le plus court possible.
