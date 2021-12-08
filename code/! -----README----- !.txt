@@ -11,6 +11,11 @@ Dinic's Algorithm
             5 6 2
  Attention, ne pas changer de structure. Cela causera une erreur !
  
+ -Les différents types de fichiers disponibles :
+  a) main.py => fichier relatif aux appels des différentes fonctions en les plaçant dans un menu;
+  b) functions.py => fichier relatif au fonctionnement du programme (lecture du fichier, création du graphe, ...);
+  c) algo.py => fichier relatif à l'application de l'algorithme de Dinic;
+ 
 -Fichier à compiler : main.py;
 
 -Suivre les indications durant l'utilisation du programme.
