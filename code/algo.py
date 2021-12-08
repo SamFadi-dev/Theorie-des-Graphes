@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import random as rdm
 from networkx.algorithms.shortest_paths.generic import has_path
-import functions as rf
+import functions as fct
 
 #----------------------------------------------------------------------------------------------
 #Fonction qui vérifié si la valeur entrée (source / puit) est correcte
@@ -73,12 +73,13 @@ def min_cap(G, path):
     return minCap
 
 #----------------------------------------------------------------------------------------------
-#Fonction qui retourne le chemin ayant un parcour avec un niveau montant
+#Fonction qui retourne le chemin ayant un parcour à niveau croissant
 #Input : Un graphe | G 
-#Output : Le chemin avec niveau montant
+#Output : Le chemin avec niveau montant | list
 def augmenting_level_path (G, source, sink):
     path = []
     if(nx.has_path(G, source, sink)):
+        #Recherche du meilleur chemin à l'aide de Dijkstra
         path = list(nx.shortest_path(G, source, sink))
         return path
     else:
@@ -149,21 +150,3 @@ def dinic_algo (G, source, sink):
     return maxFlow
     
 #----------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
