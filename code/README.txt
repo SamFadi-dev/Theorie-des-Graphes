@@ -2,7 +2,7 @@
 Projet théorie des graphes 2021
 Dinic's Algorithm
 
--Avoir un graphe sous format .txt et une structure spécifique;
+-Avoir un graphe orienté sous format .txt ayant une structure spécifique;
   Exemple : 6 -> # de sommets
             1 2 5 -> deux sommet liés par un arc et une capacité positive
             2 3 10
