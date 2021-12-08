@@ -18,7 +18,7 @@ Dinic's Algorithm
 
 -Détails du menu :
 
-  1) Le programme générera un graphe orienté complétement aléatoire pour appliquer l'algorithme de Dinic.
+  1) Le programme génèrera un graphe orienté complétement aléatoire pour appliquer l'algorithme de Dinic.
      Attention un chemin entre la source et le puit peut être compliqué à trouver sur de grands graphes.
      Cependant, un fichier .txt est enregistré dans le dossier "code" du programme pour en connaitre d'avantage de détails;
      
