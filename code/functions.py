@@ -57,6 +57,7 @@ def read_create (filename):
               #Erreur si #sommets nuls ou négatifs
               else:
                 print("error : graph without nodes !")
+                exit()
     return G
               
   except FileNotFoundError:
