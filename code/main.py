@@ -18,7 +18,7 @@ while ans:
     print("----------------------------------------------------------------")
     ans = int(input("\n"))
 
-    #Graphe aléatoire
+    # 1. Graphe aléatoire
     if(ans == 1):
         print("\n")
         x = int(input("How much nodes do you need ?\n"))
@@ -37,7 +37,7 @@ while ans:
         fct.windowed_graph(G)
         print("\n")
 
-    #Graphe fourni par l'utilisateur
+    # 2. Graphe fourni par l'utilisateur
     elif(ans == 2):
         print("\n")
         filename = input("What's the name of your .txt file ?\n")
@@ -51,7 +51,7 @@ while ans:
         fct.windowed_graph(G)
         print("\n")
 
-    #Vérification de l'algo avec la fonction dinitz()
+    # 3. Vérification de l'algo avec la fonction dinitz()
     elif(ans == 3):
         print("\n")
         filename = input("What's the name of your .txt file ?\n")
@@ -64,11 +64,11 @@ while ans:
 
         fct.windowed_graph(G)
         print("\n")
-    #about
+    # 4. about
     elif(ans == 4):
         fct.about()
 
-    #Quitter le programme
+    # 5. Quitter le programme
     elif(ans == 5):
         print("\n")
         print("Bye bye !\n")
