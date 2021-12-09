@@ -198,7 +198,7 @@ Nous trouvons tous les chemins possibles dans la fonction principale dinic() qui
 Ensuite, dans cette fonction on vérifie tout d'abord s'il y a au moins un chemin possible entre le sommet de départ(source) et le sommet d'arrivée(sink) avec la fonction has\_path(). Après cet étape nous véifions tous les chemins possibles avec les deux fonctions check\_augmenting\_level\_path() et augmenting\_level\_path().
 
 \subsection{Résolution SP3 :}
-Le capacité minimale se trouve d'une manière très intuitive. Tout d'abord, on récupère toutes les capacité du chemin considéré en utilisant la fonction G.get\_edge\_data(), on stocke les capacités des sommets dans une liste et ensuite on cherche la valeur minimale dans cette liste.
+Le capacité minimale se trouve d'une manière très intuitive. Tout d'abord, on récupère toutes les capacités du chemin considéré en utilisant la fonction G.get\_edge\_data(), on stocke les capacités des sommets dans une liste et ensuite on cherche la valeur minimale dans cette liste.
 \subsection{Résolution SP4 :}
 
 Dans la fonction modify\_edges(), tout simplement on applique les formules que nous avions pour calculer les flows.
